@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Syllabus</title>
+    <style>
+        /* Inline CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styling */
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            animation: headerSlideDown 1.5s ease;
+        }
+
+        @keyframes headerSlideDown {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Container for syllabus selection */
+        .syllabus-container {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .syllabus-container h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown select {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #4CAF50;
+            background-color: white;
+            color: #4CAF50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown select:hover {
+            border-color: #45a049;
+        }
+
+        /* Displayed syllabus */
+        .syllabus-details {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .syllabus-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .syllabus-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .syllabus-content h2 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .syllabus-content p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Back to Home button */
+        .back-btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer p {
+            margin: 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>View Syllabus</h1>
+        <p>Choose your course to view the syllabus details</p>
+    </div>
+
+    <!-- Syllabus Selection Section -->
+    <div class="syllabus-container">
+        <h1>Select a Course</h1>
+        <div class="dropdown">
+            <select id="courseSelect" onchange="showSyllabus()">
+                <option value="" disabled selected>Select your course</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+            </select>
+        </div>
+
+        <!-- Syllabus Content -->
+        <div class="syllabus-details" id="syllabusDetails">
+            <div class="syllabus-content">
+                <h2 id="courseTitle">Course Title</h2>
+                <p id="syllabusContent">Course syllabus details will appear here...</p>
+            </div>
+        </div>
+
+        <!-- Back to Home Button -->
+        <button class="back-btn" onclick="goHome()">Back to Home</button>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 Student Management Application | All Rights Reserved</p>
+    </div>
+
+    <!-- Inline JavaScript -->
+    <script>
+        // Data for the syllabus
+        const syllabusData = {
+            "Computer Science": "In this course, you will learn about algorithms, data structures, programming languages like C++, Java, Python, etc. It includes core subjects such as Operating Systems, Computer Networks, and Software Engineering.",
+            "Information Technology": "This course covers topics like Web Development, Networking, Cloud Computing, and databases. Core subjects include IT Infrastructure Management, Data Science, and Network Security.",
+            "Mechanical Engineering": "The syllabus covers Mechanics, Thermodynamics, Fluid Mechanics, and CAD design. Core subjects include Machine Design, Manufacturing Processes, and Dynamics of Machinery."
+        };
+
+        // Function to show the syllabus based on the selected course
+        function showSyllabus() {
+            const selectedCourse = document.getElementById("courseSelect").value;
+            const syllabusDetails = document.getElementById("syllabusDetails");
+            const courseTitle = document.getElementById("courseTitle");
+            const syllabusContent = document.getElementById("syllabusContent");
+
+            if (selectedCourse) {
+                courseTitle.textContent = selectedCourse;
+                syllabusContent.textContent = syllabusData[selectedCourse];
+
+                syllabusDetails.style.display = "block";
+                syllabusDetails.style.opacity = "1";
+            } else {
+                syllabusDetails.style.display = "none";
+            }
+        }
+
+        // Function to go back to the home page
+        function goHome() {
+            window.location.href = "index.html"; // Assuming index.html is the home page
+        }
+    </script>
+
+</body>
+</html>

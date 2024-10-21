@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <style>
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #222222;
+	overflow: hidden;
+}
+
+.square {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50px;
+	height: 50px;
+	background: linear-gradient(#303030, #757575);
+	z-index: 2;
+}
+
+.circle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50px;
+	height: 50px;
+	background: #1cd99d;
+	border-radius: 50%;
+}
+
+.triangle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50px;
+	height: 50px;
+	background: #f5f5f5;
+	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+	-webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .block{
+            content: "Hello";
+            background-image: url("under_dev.webp");
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 300px;
+            width: 300px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          animation: scaleAnim 3s ease-out infinite;
+            
+        }
+
+        @keyframes scaleAnim{
+
+            0%{
+                transform: scale(1);
+            }
+
+            50%{
+                transform: scale(1.1) rotate(10deg);
+            
+            }
+            100%{
+                transform: scale(1) rotate(0deg);
+            }
+        }
+    </style>
+
+   
+</head>
+
+
+<body>
+
+    <div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+
+<div class="triangle"></div>
+<div class="triangle"></div>
+<div class="triangle"></div>
+<div class="triangle"></div>
+<div class="triangle"></div>
+   
+    <div class="block">
+
+    </div>
+</body>
+
+<script>
+    function randomValues() {
+  anime({
+    targets: '.square, .circle, .triangle',
+    translateX: function() {
+      return anime.random(-500, 500);
+    },
+		translateY: function() {
+      return anime.random(-300, 300);
+    },
+		rotate: function() {
+			return anime.random(0, 360);
+		},
+		scale: function() {
+			return anime.random(.2, 2);
+		},
+    duration: 1000,
+		easing: 'easeInOutQuad',
+    complete: randomValues,
+	});
+}
+
+randomValues();
+</script>
+</html>

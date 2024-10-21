@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Staff</title>
+    <style>
+        /* Inline CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styling */
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            animation: headerSlideDown 1.5s ease;
+        }
+
+        @keyframes headerSlideDown {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Container for staff list */
+        .staff-container {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .staff-container h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Dropdown for filtering staff by department */
+        .dropdown {
+            margin-bottom: 30px;
+        }
+
+        .dropdown select {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #4CAF50;
+            background-color: white;
+            color: #4CAF50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown select:hover {
+            border-color: #45a049;
+        }
+
+        /* Staff card layout */
+        .staff-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .staff-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.5s ease both;
+        }
+
+        .staff-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .staff-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .staff-card h2 {
+            font-size: 20px;
+            color: #4CAF50;
+        }
+
+        .staff-card p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        /* Back to Home button */
+        .back-btn {
+            margin-top: 30px;
+            margin-bottom: 33px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>View Staff</h1>
+        <p>Select a department to view staff members</p>
+    </div>
+
+    <!-- Staff Selection Section -->
+    <div class="staff-container">
+        <h1>Our Staff</h1>
+
+        <!-- Department Dropdown -->
+        <div class="dropdown">
+            <select id="departmentSelect" onchange="filterStaff()">
+                <option value="All">All Departments</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+            </select>
+        </div>
+
+        <!-- Staff Cards -->
+        <div class="staff-grid" id="staffGrid">
+            <div class="staff-card" data-department="Computer Science">
+                <img src="profile.png" alt="Staff Image">
+                <h2>P.T. Zhunjhare</h2>
+                <p>Computer Engineering Professor</p>
+            </div>
+
+            <div class="staff-card" data-department="Information Technology">
+                <img src="profile.png" alt="Staff Image">
+                <h2>Y.B. Sanap</h2>
+                <p>IT HOD</p>
+            </div>
+
+            <div class="staff-card" data-department="Mechanical Engineering">
+                <img src="profile.png" alt="Staff Image">
+                <h2>P.T. Kale</h2>
+                <p>Mechanical Engineering HOD</p>
+            </div>
+
+            <div class="staff-card" data-department="Computer Science">
+                <img src="profile.png" alt="Staff Image">
+                <h2>J.B. Nemane</h2>
+                <p>Computer Engineering Lecturer</p>
+            </div>
+
+            <div class="staff-card" data-department="Information Technology">
+                <img src="profile.png" alt="Staff Image">
+                <h2>M.A. Dhaygude</h2>
+                <p>IT Lecturer</p>
+            </div>
+
+            <div class="staff-card" data-department="Mechanical Engineering">
+                <img src="profile.png" alt="Staff Image">
+                <h2>N.S. Shinde</h2>
+                <p>Mechanical Engineering HOD</p>
+            </div>
+        </div>
+
+        <!-- Back to Home Button -->
+        <button class="back-btn" onclick="goHome()">Back to Home</button>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 Student Management Application | All Rights Reserved</p>
+    </div>
+
+    <!-- Inline JavaScript -->
+    <script>
+        // Function to filter staff by department
+        function filterStaff() {
+            const selectedDepartment = document.getElementById("departmentSelect").value;
+            const staffCards = document.querySelectorAll(".staff-card");
+
+            staffCards.forEach(card => {
+                if (selectedDepartment === "All" || card.getAttribute("data-department") === selectedDepartment) {
+                    card.style.display = "block";
+                    card.style.animation = "fadeInUp 0.5s ease both";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Function to go back to the home page
+        function goHome() {
+            window.location.href = "index.html"; // Assuming index.html is the home page
+        }
+    </script>
+
+</body>
+</html>

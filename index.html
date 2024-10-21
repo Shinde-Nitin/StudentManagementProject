@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management Application</title>
+    <style>
+        /* Inline CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            animation: headerAnimation 1.5s ease-out;
+        }
+        @keyframes headerAnimation {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+        .menu a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .menu a:hover {
+            background-color: #4CAF50;
+            animation: menuHover 0.4s;
+        }
+        @keyframes menuHover {
+            from { background-color: #333; }
+            to { background-color: #4CAF50; }
+        }
+        .container {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .card {
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .card:hover {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Information Section */
+        .info-section {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #ffffff;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .info-section h2 {
+            color: #4CAF50;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .info-section p {
+            color: #333;
+            font-size: 18px;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        /* Floating button animation */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            display: none;
+        }
+        .scroll-top-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px;
+        }
+        .footer p {
+            margin: 0;
+            padding: 5px;
+        }
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Student Management Application</h1>
+        <p>Your one-stop solution for managing student data efficiently</p>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="menu">
+        <a href="under_construction.html">Home</a>
+        <a href="under_construction.html">About Us</a>
+        <a href="under_construction.html">Contact</a>
+        <a href="under_construction.html">Help</a>
+    </div>
+
+    <!-- Main Content - Cards -->
+    <div class="container">
+        <div class="card" id="login">
+            <h2>Student Login</h2>
+            <a href="student_login.html">Login</a>
+        </div>
+
+        <div class="card" id="registration">
+            <h2>Student Registration</h2>
+            <a href="student_registration.html">Register</a>
+        </div>
+
+        <div class="card" id="syllabus">
+            <h2>View Syllabus</h2>
+            <a href="view_syllabus.html" target="_self">Syllabus</a>
+        </div>
+
+        <div class="card" id="staff">
+            <h2>View Staff</h2>
+            <a href="view_staff.html">Staff</a>
+        </div>
+
+        <div class="card" id="allStudents">
+            <h2>See All Students</h2>
+            <a href="ViewAllStudents">View</a>
+        </div>
+    </div>
+
+    <!-- Information Section -->
+    <div class="info-section">
+        <h2>About Our Application</h2>
+        <p>
+            The Student Management Application allows you to effortlessly manage student-related tasks such as registration, 
+            logging in, and viewing important resources like the syllabus and staff details. This platform is designed to streamline 
+            the process and enhance communication within educational institutions.
+        </p>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()">Top</button>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 Student Management Application. All rights reserved.</p>
+        <p>Developed by <a href="#">Nitin Shinde (IT)</a></p>
+    </div>
+
+    <!-- Inline JavaScript -->
+    <script>
+        document.getElementById("syllabus").addEventListener("click", function() {
+            window.location.href = "view_syllabus.html";
+        });
+
+        document.getElementById("staff").addEventListener("click", function() {
+            window.location.href = "view_staff.html";
+        });
+
+        document.getElementById("login").addEventListener("click", function() {
+            window.location.href = "student_login.html";
+        });
+
+        document.getElementById("registration").addEventListener("click", function() {
+            window.location.href = "student_registration.html";
+        });
+
+        document.getElementById("allStudents").addEventListener("click", function() {
+            window.location.href = "ViewAllStudents";
+        });
+
+        // Show the "scroll to top" button when scrolling down
+        window.onscroll = function() {
+            var scrollBtn = document.getElementById("scrollTopBtn");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        };
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+        }
+    </script>
+
+</body>
+</html>
