@@ -13,7 +13,7 @@ public class Login extends HttpServlet {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","System","122718");
         } catch (Exception e) {
-            // TODO: handle exception
+        
             System.out.println(e.getMessage());
         }
     }
@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
             pw.println("No such student exists, please Register.");
         }
        
-       //pw.println("<h1>Username : "+username+" Password : "+password+"</h1>");
+       
        pw.close(); 
     }catch(Exception e){
         System.out.println(e.getMessage());

@@ -96,9 +96,7 @@ public List<Student> getAllStudents() {
 
 }
 
-/**
- * InnerViewAllStudent
- */
+// POJOClass (For fetching multiple data from database)
  class Student {
 
     String rollno,name,email;
@@ -132,6 +130,3 @@ public List<Student> getAllStudents() {
 
     
 }
-
-
-// java ( Servlet ) , HTML, CSS , JS, SQL, JDBC, XML
